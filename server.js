@@ -8,6 +8,12 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const os = require('os'); // 맨 위에 require('os')가 없다면 추가
+app.use((req, res, next) => {
+    res.setHeader('X-Server-Name', os.hostname()); // 헤더 이름: X-Server-Name
+    next();
+});
+
 // 1. DB 연결 설정 (Connection Pool 사용)
 const dbOptions = {
     host: process.env.DB_HOST,
