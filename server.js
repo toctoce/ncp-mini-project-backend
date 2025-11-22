@@ -50,7 +50,7 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         secure: false, // https 적용 시 true로 변경 필요
-        maxAge: process.env.SESSION_TIME
+        maxAge: parseInt(process.env.SESSION_TIME)
     }
 }));
 
